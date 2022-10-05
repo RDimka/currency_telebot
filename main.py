@@ -13,7 +13,6 @@ def start(message: telebot.types.Message):
 Для вывода доступных валют: /values'
     currency_telebot.send_message(message.chat.id, text)
 
-
 # обработчик команды /values
 @currency_telebot.message_handler(commands=['values'])
 def values(message: telebot.types.Message):
