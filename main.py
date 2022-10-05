@@ -3,11 +3,7 @@ from extensions import APIException, Convertor
 from Currency_telebot_config import TOKEN, exchanges
 import traceback
 
-import json
-import requests
-
 currency_telebot = telebot.TeleBot(TOKEN)
-
 
 # обработчик команд /start И /help
 @currency_telebot.message_handler(commands=['start', 'help'])
@@ -43,18 +39,5 @@ def converter(message: telebot.types.Message):
         currency_telebot.reply_to(message, f"Неизвестная ошибка:\n{e}")
     else:
         currency_telebot.reply_to(message, answer)
-
-
-#API_KEY = 'bMpcP6g1Ht6CHEHazRZTNJACIKwFIbUw'
-#headers = {"apikey": "bMpcP6g1Ht6CHEHazRZTNJACIKwFIbUw"}
-
-#base_key = 'USD'
-#sym_key = 'EUR'
-#amount = 5
-#r = requests.get(f"https://data.fixer.io/api/latest?access_key={API_KEY}&base=base={base_key}&symbols={sym_key}", )
-#r = requests.get(f"https://api.apilayer.com/fixer/latest?symbols={sym_key}&base={base_key}", headers=headers)
-#resp = json.loads(r.content)
-#new_price = resp['rates'][sym_key] * amount
-#new_price = round(new_price, 3)
 
 currency_telebot.polling() #запустили бота
